@@ -1,0 +1,239 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 26-01-2026 a las 13:42:14
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `consorcio`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `address`
+--
+
+CREATE TABLE `address` (
+  `id` int(11) NOT NULL,
+  `street_principal` varchar(255) NOT NULL,
+  `street_secondary` varchar(255) DEFAULT NULL,
+  `number` int(11) DEFAULT NULL,
+  `apartment` varchar(20) DEFAULT NULL,
+  `floor` varchar(10) DEFAULT NULL,
+  `city` int(11) NOT NULL,
+  `state` varchar(100) DEFAULT NULL,
+  `postal_code` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `city`
+--
+
+CREATE TABLE `city` (
+  `id` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `login`
+--
+
+CREATE TABLE `login` (
+  `user` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `people`
+--
+
+CREATE TABLE `people` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
+  `birthday` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `mail` varchar(255) DEFAULT NULL,
+  `telephone` varchar(20) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `property`
+--
+
+CREATE TABLE `property` (
+  `id` int(11) NOT NULL,
+  `type_property` int(11) NOT NULL,
+  `id_address` int(11) NOT NULL,
+  `id_people` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `type_property`
+--
+
+CREATE TABLE `type_property` (
+  `id` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `id_people` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `role` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `state` int(11) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `address`
+--
+ALTER TABLE `address`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `city` (`city`);
+
+--
+-- Indices de la tabla `city`
+--
+ALTER TABLE `city`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`user`);
+
+--
+-- Indices de la tabla `people`
+--
+ALTER TABLE `people`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `property`
+--
+ALTER TABLE `property`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `type_property` (`type_property`),
+  ADD KEY `id_address` (`id_address`),
+  ADD KEY `id_people` (`id_people`);
+
+--
+-- Indices de la tabla `type_property`
+--
+ALTER TABLE `type_property`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD KEY `id_people` (`id_people`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `address`
+--
+ALTER TABLE `address`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `city`
+--
+ALTER TABLE `city`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `people`
+--
+ALTER TABLE `people`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `property`
+--
+ALTER TABLE `property`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `type_property`
+--
+ALTER TABLE `type_property`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `address`
+--
+ALTER TABLE `address`
+  ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`city`) REFERENCES `city` (`id`);
+
+--
+-- Filtros para la tabla `property`
+--
+ALTER TABLE `property`
+  ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`type_property`) REFERENCES `type_property` (`id`),
+  ADD CONSTRAINT `property_ibfk_2` FOREIGN KEY (`id_address`) REFERENCES `address` (`id`),
+  ADD CONSTRAINT `property_ibfk_3` FOREIGN KEY (`id_people`) REFERENCES `people` (`id`);
+
+--
+-- Filtros para la tabla `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_people`) REFERENCES `people` (`id`),
+  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`username`) REFERENCES `login` (`user`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

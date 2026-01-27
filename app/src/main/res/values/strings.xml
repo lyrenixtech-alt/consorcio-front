@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">App Consorcio</string>
+    <string name="male">hombre</string>
+    <string name="female">mujer</string>
+    <string name="height">altura</string>
+    <string name="weight">peso</string>
+    <string name="age">edad</string>
+    <string name="calculate">calcular</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/FragmentEdificio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="#A45A52">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutNombre"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Nombre del edificio"
+            app:hintTextColor="@color/white"
+            android:textColorHint="@color/white"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNombreEdificio"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:paddingTop="16dp"
+                android:inputType="text"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutCuit"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="CUIT (Ej: 30-12345678-9)"
+            app:hintTextColor="@color/white"
+            android:textColorHint="@color/white"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/layoutDireccion"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCuit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDireccion"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Direccion"
+            app:hintTextColor="@color/white"
+            android:textColorHint="@color/white"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutNombre"
+            app:layout_constraintBottom_toTopOf="@id/layoutCuit"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/contenedorUF"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutCuit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                >
+                <TextView
+                    android:id="@+id/tvLabelCantUF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cant. Unidades"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutCantUF"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="100dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCantUF"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="3" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:id="@+id/tvLabelCantPisos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pisos"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutCantPisos"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="100dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCantPisos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="3" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tvLabelCantTorres"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cant. Torres"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutCantTorres"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="100dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCantTorres"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="3" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/contenedorUF"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#5D2719"
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="servicios y ameneties"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    >
+
+                </androidx.appcompat.widget.AppCompatTextView>
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchPileta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="pileta (requiere quimicos y seguro)"
+                    android:textAllCaps="true"
+                    android:textSize="12dp"
+                    android:layout_marginTop="16dp"
+                    >
+
+                </androidx.appcompat.widget.SwitchCompat>
+                <LinearLayout
+                    android:id="@+id/containerCamposPileta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:padding="16dp">
+
+                    <EditText
+                        android:id="@+id/etAncho"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Ancho (m)"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:inputType="numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/etLargo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Largo (m)"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+
+                        android:inputType="numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/etProfundidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Profundidad (m)"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:inputType="numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/etLitros"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Litros totales"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:inputType="number" />
+                </LinearLayout>
+
+
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchSum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="sum "
+                    android:textAllCaps="true"
+                    android:textSize="12dp"
+                    android:layout_marginTop="16dp"
+                    >
+                </androidx.appcompat.widget.SwitchCompat>
+                <LinearLayout
+                    android:id="@+id/containerCamposSum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:padding="16dp">
+
+                <EditText
+                    android:id="@+id/etMedidasSum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dimensiones (m2)"
+                    android:textSize="14dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:inputType="numberDecimal" />
+                </LinearLayout>
+
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchGimnasio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="gimnasio (requiere quimicos y seguro)"
+                    android:textAllCaps="true"
+                    android:textSize="12dp"
+                    android:layout_marginTop="16dp"
+                    >
+                </androidx.appcompat.widget.SwitchCompat>
+                <LinearLayout
+                    android:id="@+id/containerCamposGimnasio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:padding="16dp">
+
+                    <EditText
+                        android:id="@+id/etMedidasGimnasio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Dimensiones (m2)"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:inputType="numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/etCapacidadGimnasio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Cant.personas(capacidad)"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:inputType="numberDecimal" />
+                </LinearLayout>
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchSolarium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="solarium"
+                    android:textAllCaps="true"
+                    android:textSize="12dp"
+                    android:layout_marginTop="16dp"
+                    >
+
+                </androidx.appcompat.widget.SwitchCompat>
+                <LinearLayout
+                    android:id="@+id/containerCamposSolarium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:padding="16dp">
+
+                    <EditText
+                        android:id="@+id/etMedidasSolarium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Dimensiones (m2)"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:inputType="numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/etCapacidadSolarium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Cant.personas(capacidad)"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:inputType="numberDecimal" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchParque"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="parque"
+                    android:textAllCaps="true"
+                    android:textSize="12dp"
+                    android:layout_marginTop="16dp"
+                    >
+                </androidx.appcompat.widget.SwitchCompat>
+                <LinearLayout
+                    android:id="@+id/containerCamposParque"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:padding="16dp">
+
+                <EditText
+                    android:id="@+id/etMedidasParque"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dimensiones (m2)"
+                    android:textSize="14dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:inputType="numberDecimal" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchCochera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="cochera"
+                    android:textAllCaps="true"
+                    android:textSize="12dp"
+                    android:layout_marginTop="16dp"
+                    >
+                </androidx.appcompat.widget.SwitchCompat>
+                <LinearLayout
+                    android:id="@+id/containerCamposCochera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:padding="16dp">
+
+                    <EditText
+                        android:id="@+id/etMedidasCochera"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Dimensiones (m2)"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:inputType="numberDecimal" />
+
+                    <EditText
+                        android:id="@+id/etCapacidadCochera"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Cant. autos (capacidad)"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:inputType="numberDecimal" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchAscensores"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ascensores"
+                    android:textAllCaps="true"
+                    android:textSize="12dp"
+                    android:layout_marginTop="16dp"
+                    >
+                </androidx.appcompat.widget.SwitchCompat>
+                <LinearLayout
+                    android:id="@+id/containerCamposAscensores"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:padding="16dp">
+
+                    <EditText
+                        android:id="@+id/etCantidadAscensores"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Cantidad"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/etCapacidadAscensores"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Capacidad"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:inputType="numberDecimal" />
+                    <EditText
+                        android:id="@+id/etEmpresaControladora"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Empresa controladora"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:inputType="numberDecimal" />
+
+                </LinearLayout>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,10 @@
+<resources>
+
+    <style name="Theme.PracticasEjemplo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    </style>
+    <style name="HintNegrita" parent="TextAppearance.Design.Hint">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+</resources>

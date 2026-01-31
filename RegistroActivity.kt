@@ -5,6 +5,8 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
+import java.util.Calendar
+import android.app.DatePickerDialog
 
 class RegistroActivity : AppCompatActivity() {
 
@@ -12,15 +14,26 @@ class RegistroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
 
-        val btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
-        btnRegistrar.setOnClickListener {
-            if (validarCampos()) {
-                // Aquí podrías guardar los datos o enviarlos a una API
-                Toast.makeText(this, "¡Usuario registrado con éxito!", Toast.LENGTH_LONG).show()
-                // Ejemplo: finish() para volver a la pantalla anterior
-            }
+        val editBirthday = findViewById<TextInputEditText>(R.id.editBirthday)
+        editBirthday.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePicker = DatePickerDialog(
+                this,
+                { _, selectedYear, selectedMonth, selectedDay ->
+                    // Formato: dd/MM/yyyy
+                    val formattedDate = String.format("%02d/%02d/%Y", selectedDay, selectedMonth + 1, selectedYear)
+                    editBirthday.setText(formattedDate)
+                },
+                year,
+                month,
+                day
+            )
+            datePicker.show()
         }
-    }
 
     private fun validarCampos(): Boolean {
         val editNombre = findViewById<TextInputEditText>(R.id.editNombre)

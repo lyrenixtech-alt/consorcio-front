@@ -13,6 +13,8 @@
         android:padding="24dp"
         android:gravity="center">
 
+        <!-- TITULO -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,6 +23,8 @@
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:layout_marginBottom="32dp" />
+
+        <!-- NOMBRE -->
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -40,6 +44,8 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- APELLIDO -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,6 +63,8 @@
                 android:inputType="textPersonName" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- DNI -->
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -76,6 +84,28 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- FECHA DE NACIMIENTO  -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha de nacimiento (dd/mm/aaaa)"
+                android:textSize="16sp"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- TELEFONO -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -93,6 +123,8 @@
                 android:inputType="phone" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- CORREO ELECTRÓNICO -->
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"

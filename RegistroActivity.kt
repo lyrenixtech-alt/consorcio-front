@@ -14,6 +14,7 @@ class RegistroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
 
+
         val editBirthday = findViewById<TextInputEditText>(R.id.editBirthday)
         editBirthday.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -84,6 +85,16 @@ class RegistroActivity : AppCompatActivity() {
             editEmail.requestFocus()
             return false
         }
+
+        val btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
+        btnRegistrar.setOnClickListener {
+            if (validarCampos()) {
+                // Aquí podrías guardar los datos o enviarlos a una API
+                Toast.makeText(this, "¡Usuario registrado con éxito!", Toast.LENGTH_LONG).show()
+                // Ejemplo: finish() para volver a la pantalla anterior
+            }
+
+
 
         return true
     }
